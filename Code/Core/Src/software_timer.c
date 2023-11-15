@@ -6,6 +6,7 @@
  */
 
 #include "software_timer.h"
+#include "button.h"
 
 #define MAX_SOFTWARE_TIMER	10
 #define TIMER_CYCLE	1
@@ -22,5 +23,6 @@ void timerRun(){
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	timerRun();
+	button_reading();
 }
 

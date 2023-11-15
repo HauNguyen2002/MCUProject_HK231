@@ -204,8 +204,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, D7_Pin|D2_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : A1_Pin A2_Pin */
-  GPIO_InitStruct.Pin = A1_Pin|A2_Pin;
+  /*Configure GPIO pins : A0_Pin A1_Pin A2_Pin */
+  GPIO_InitStruct.Pin = A0_Pin|A1_Pin|A2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
