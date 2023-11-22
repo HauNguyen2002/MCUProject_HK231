@@ -1,4 +1,6 @@
 "./Core/Src/button.o"
+"./Core/Src/fsm_auto.o"
+"./Core/Src/fsm_manual.o"
 "./Core/Src/main.o"
 "./Core/Src/software_timer.o"
 "./Core/Src/stm32f1xx_hal_msp.o"

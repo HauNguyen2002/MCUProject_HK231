@@ -13,6 +13,7 @@
 #define BUTTON_IS_RELEASED				GPIO_PIN_SET
 
 int Buttons[NO_OF_BUTTONS]={A0_Pin,A1_Pin,A2_Pin,A3_Pin};
+int GPIO_Buttons[NO_OF_BUTTONS]={GPIOA,GPIOA,GPIOA,GPIOB};
 static GPIO_PinState buttonBuffer[NO_OF_BUTTONS];
 static GPIO_PinState debounceButtonBuffer1 [ NO_OF_BUTTONS ];
 static GPIO_PinState debounceButtonBuffer2 [ NO_OF_BUTTONS ];
@@ -25,7 +26,7 @@ static uint16_t counterForButtonPress1s [ NO_OF_BUTTONS ];
 void button_reading(void){
 	for(char i=0;i< NO_OF_BUTTONS;i++){
 		debounceButtonBuffer2[i]=debounceButtonBuffer1[i];
-		debounceButtonBuffer1[i]= HAL_GPIO_ReadPin(GPIOA, Buttons[i]);
+		debounceButtonBuffer1[i]= HAL_GPIO_ReadPin(GPIO_Buttons[i], Buttons[i]);
 		if(debounceButtonBuffer1[i]==debounceButtonBuffer2[i]) buttonBuffer[i]= debounceButtonBuffer1[i];
 
 		if(buttonBuffer[i]==BUTTON_IS_PRESSED){

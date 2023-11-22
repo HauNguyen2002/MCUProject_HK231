@@ -9,10 +9,10 @@
 #define INC_SOFTWARE_TIMER_H_
 
 #include "main.h"
+// timer flags, maximum is 10 (adjustable), add more setTimer functions,
+// do not add more timerRun functions
 
-uint8_t flag[];
-uint8_t counter[];
-
+extern uint8_t flag[];
 
 
 
