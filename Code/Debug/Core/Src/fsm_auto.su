@@ -1,2 +1,2 @@
 fsm_auto.c:20:6:fsm_auto	8	static
-fsm_auto.c:116:6:auto_light_control	4	static
+fsm_auto.c:119:6:auto_light_control	8	static

@@ -64,6 +64,8 @@ void Error_Handler(void);
 #define A1_GPIO_Port GPIOA
 #define A2_Pin GPIO_PIN_4
 #define A2_GPIO_Port GPIOA
+#define DEBUG_LED_Pin GPIO_PIN_5
+#define DEBUG_LED_GPIO_Port GPIOA
 #define D12_Pin GPIO_PIN_6
 #define D12_GPIO_Port GPIOA
 #define A3_Pin GPIO_PIN_0
@@ -72,8 +74,8 @@ void Error_Handler(void);
 #define D6_GPIO_Port GPIOB
 #define D7_Pin GPIO_PIN_8
 #define D7_GPIO_Port GPIOA
-#define D2_Pin GPIO_PIN_10
-#define D2_GPIO_Port GPIOA
+#define D8_Pin GPIO_PIN_9
+#define D8_GPIO_Port GPIOA
 #define D3_Pin GPIO_PIN_3
 #define D3_GPIO_Port GPIOB
 #define D5_Pin GPIO_PIN_4

@@ -1,0 +1,10 @@
+Scheduler.c:12:6:newTail	16	static
+Scheduler.c:22:6:newHead	16	static
+Scheduler.c:34:6:newNorm	24	static
+Scheduler.c:47:6:SCH_Arrange_List	24	static
+Scheduler.c:77:6:SCH_Init	4	static
+Scheduler.c:82:6:SCH_Update	4	static
+Scheduler.c:90:15:SCH_Add_Task	32	static
+Scheduler.c:110:6:SCH_Dispatch_Tasks	16	static
+Scheduler.c:135:6:SCH_Arrange_Head	4	static
+Scheduler.c:146:15:SCH_Delete_Tasks	16	static

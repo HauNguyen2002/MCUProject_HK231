@@ -1,0 +1,3 @@
+tuning_fsm.c:14:6:tuning_fsm	8	static
+tuning_fsm.c:59:6:adjTuningLight	4	static
+tuning_fsm.c:90:6:tunButtonHandler	16	static

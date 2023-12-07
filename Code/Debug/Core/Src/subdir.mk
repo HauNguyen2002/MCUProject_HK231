@@ -5,40 +5,43 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/Scheduler.c \
+../Core/Src/auto_fsm.c \
 ../Core/Src/button.c \
-../Core/Src/fsm_auto.c \
-../Core/Src/fsm_manual.c \
+../Core/Src/global.c \
 ../Core/Src/main.c \
-../Core/Src/software_timer.c \
 ../Core/Src/stm32f1xx_hal_msp.c \
 ../Core/Src/stm32f1xx_it.c \
 ../Core/Src/syscalls.c \
 ../Core/Src/sysmem.c \
-../Core/Src/system_stm32f1xx.c 
+../Core/Src/system_stm32f1xx.c \
+../Core/Src/tuning_fsm.c 
 
 C_DEPS += \
+./Core/Src/Scheduler.d \
+./Core/Src/auto_fsm.d \
 ./Core/Src/button.d \
-./Core/Src/fsm_auto.d \
-./Core/Src/fsm_manual.d \
+./Core/Src/global.d \
 ./Core/Src/main.d \
-./Core/Src/software_timer.d \
 ./Core/Src/stm32f1xx_hal_msp.d \
 ./Core/Src/stm32f1xx_it.d \
 ./Core/Src/syscalls.d \
 ./Core/Src/sysmem.d \
-./Core/Src/system_stm32f1xx.d 
+./Core/Src/system_stm32f1xx.d \
+./Core/Src/tuning_fsm.d 
 
 OBJS += \
+./Core/Src/Scheduler.o \
+./Core/Src/auto_fsm.o \
 ./Core/Src/button.o \
-./Core/Src/fsm_auto.o \
-./Core/Src/fsm_manual.o \
+./Core/Src/global.o \
 ./Core/Src/main.o \
-./Core/Src/software_timer.o \
 ./Core/Src/stm32f1xx_hal_msp.o \
 ./Core/Src/stm32f1xx_it.o \
 ./Core/Src/syscalls.o \
 ./Core/Src/sysmem.o \
-./Core/Src/system_stm32f1xx.o 
+./Core/Src/system_stm32f1xx.o \
+./Core/Src/tuning_fsm.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes

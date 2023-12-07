@@ -22,7 +22,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "auto_fsm.h"
+#include "tuning_fsm.h"
+#include "Scheduler.h"
+#include "global.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,7 +59,21 @@ static void MX_TIM2_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+void system_init(){
+	SCH_Init();
+}
+void* setAutoLightFlag(){
+	flag[1]=1;
+}
+void* setButtonCooldownFlag(){
+	flag[2]=1;
+}
+void* setManualLightFlag(){
+	flag[3]=1;
+}
+void* setAutoIncFlag(){
+	flag[4]=1;
+}
 /* USER CODE END 0 */
 
 /**
@@ -90,12 +107,20 @@ int main(void)
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   HAL_TIM_Base_Start_IT(&htim2);
+  system_init();
+  SCH_Add_Task(1, setAutoLightFlag, 100, 1000);
+  SCH_Add_Task(2, setButtonCooldownFlag, 100, 100);
+  SCH_Add_Task(3, setManualLightFlag, 100, 250);
+  SCH_Add_Task(4, setAutoIncFlag, 100, 500);
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  auto_fsm();
+	  tuning_fsm();
+	  SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -159,9 +184,9 @@ static void MX_TIM2_Init(void)
 
   /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 639;
+  htim2.Init.Prescaler = 6399;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 99;
+  htim2.Init.Period = 9;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
@@ -199,15 +224,22 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOB, D6_Pin|D3_Pin|D5_Pin|D4_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, DEBUG_LED_Pin|D7_Pin|D8_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, D7_Pin|D2_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOB, D6_Pin|D3_Pin|D5_Pin|D4_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pins : A0_Pin A1_Pin A2_Pin */
   GPIO_InitStruct.Pin = A0_Pin|A1_Pin|A2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : DEBUG_LED_Pin D7_Pin D8_Pin */
+  GPIO_InitStruct.Pin = DEBUG_LED_Pin|D7_Pin|D8_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pin : D12_Pin */
@@ -228,13 +260,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : D7_Pin D2_Pin */
-  GPIO_InitStruct.Pin = D7_Pin|D2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 }
 
