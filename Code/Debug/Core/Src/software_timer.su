@@ -1,6 +1,6 @@
-software_timer.c:19:6:setAutolightTimer	16	static
-software_timer.c:23:6:setButtonCooldown	16	static
-software_timer.c:27:6:setManualLightBlink	16	static
-software_timer.c:31:6:setAutoIncreaseTime	16	static
-software_timer.c:35:6:timerRun	16	static
-software_timer.c:42:6:HAL_TIM_PeriodElapsedCallback	16	static
+software_timer.c:18:6:setAutoLightTimer	16	static
+software_timer.c:23:6:setTuningLightTimer	16	static
+software_timer.c:28:6:setButtonCooldownTimer	16	static
+software_timer.c:33:6:setAutoIncTimer	16	static
+software_timer.c:37:6:setBuzzerStateTimer	16	static
+software_timer.c:42:6:timerRun	16	static

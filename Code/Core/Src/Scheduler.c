@@ -44,6 +44,18 @@ void newNorm(tNode* nNorm, tNode* prev, tNode* next){
 	next->prevT=nNorm;
 }
 
+void SCH_Arrange_Head(){
+	if(SCH_tlist->head==SCH_tlist->tail){
+		SCH_tlist->head=SCH_tlist->tail=NULL;
+		SCH_tlist->head->nextT=NULL;
+		SCH_tlist->head->prevT=NULL;
+	}
+	if(SCH_tlist->head!=SCH_tlist->tail){
+		SCH_tlist->head=SCH_tlist->head->nextT;
+		SCH_tlist->head->prevT=NULL;
+	}
+}
+
 void SCH_Arrange_List(tNode* cur_node,unsigned int DURATION){
 	cur_node->waitTime=DURATION;
 	if(SCH_tlist->head!=NULL && SCH_tlist->tail!=NULL){
@@ -56,15 +68,11 @@ void SCH_Arrange_List(tNode* cur_node,unsigned int DURATION){
 			SCH_tlist->row_cml-= walker->waitTime;
 			walker=walker->prevT;
 		}
-		if(walker==NULL){
-			newHead(cur_node, SCH_tlist->head);
-		}
-		else if(walker==SCH_tlist->tail){
-			newTail(cur_node, walker);
-		}
-		else{
-			newNorm(cur_node, walker, walker->nextT);
-		}
+
+		if(walker==NULL) newHead(cur_node, SCH_tlist->head);
+		else if(walker==SCH_tlist->tail) newTail(cur_node, walker);
+		else newNorm(cur_node, walker, walker->nextT);
+
 		SCH_tlist->row_cml+=giveBackCursum;
 		giveBackCursum=0;
 	}
@@ -75,15 +83,19 @@ void SCH_Arrange_List(tNode* cur_node,unsigned int DURATION){
 	}
 }
 void SCH_Init(void){
+	tList* SCH_tlist=(tList*)malloc(10*sizeof(tList));
 	SCH_tlist->head=SCH_tlist->tail=NULL;
 	SCH_tlist->row_cml=0;
 }
-
 void SCH_Update(void)
 {
-	if(SCH_tlist->head->waitTime>0){
-		SCH_tlist->head->waitTime-=1;
-		SCH_tlist->row_cml-=1;
+	if(SCH_tlist->head!=NULL){
+
+		if(SCH_tlist->head->waitTime>0){
+				SCH_tlist->head->waitTime-=1;
+				SCH_tlist->row_cml-=1;
+			giveBackCursum++;
+		}
 	}
 }
 
@@ -132,17 +144,7 @@ void SCH_Dispatch_Tasks(void)
 	}
 }
 
-void SCH_Arrange_Head(){
-	if(SCH_tlist->head==SCH_tlist->tail){
-		SCH_tlist->head=SCH_tlist->tail=NULL;
-		SCH_tlist->head->nextT=NULL;
-		SCH_tlist->head->prevT=NULL;
-	}
-	if(SCH_tlist->head!=SCH_tlist->tail){
-		SCH_tlist->head=SCH_tlist->head->nextT;
-		SCH_tlist->head->prevT=NULL;
-	}
-}
+
 unsigned char SCH_Delete_Tasks(tNode* deltask){
 deltask->prevT=deltask->nextT=NULL;
 deltask->waitTime=deltask->period=0;

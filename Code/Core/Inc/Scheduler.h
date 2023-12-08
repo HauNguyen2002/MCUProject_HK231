@@ -10,6 +10,7 @@
 
 #include "main.h"
 #include "stdio.h"
+#include "stdlib.h"
 
 #define SCH_MAX_TASKS 40
 #define NO_TASK_ID 0

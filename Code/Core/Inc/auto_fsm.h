@@ -11,7 +11,7 @@
 #include "global.h"
 
 void auto_fsm();
-void adjAutoLight();
+void autoLightHandler();
 void autoButtonHandler();
 
 #endif /* INC_AUTO_FSM_H_ */

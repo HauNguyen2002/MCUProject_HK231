@@ -12,5 +12,5 @@
 
 void Tuning_fsm();
 void adjTuningLight();
-void tunButtonHandler(enum MANUALLIGHT curLight,enum MANUALLIGHT nextLight);
+void tunButtonHandler(enum TUNINGLIGHT curLight,enum TUNINGLIGHT nextLight);
 #endif /* INC_TUNING_FSM_H_ */

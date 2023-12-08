@@ -12,8 +12,8 @@
 #define BUTTON_IS_PRESSED				GPIO_PIN_RESET
 #define BUTTON_IS_RELEASED				GPIO_PIN_SET
 
-int Buttons[NO_OF_BUTTONS]={A0_Pin,A1_Pin,A2_Pin,A3_Pin};
-int GPIO_Buttons[NO_OF_BUTTONS]={GPIOA,GPIOA,GPIOA,GPIOB};
+int Buttons[NO_OF_BUTTONS]={A1_Pin,A2_Pin,A3_Pin,A0_Pin};
+int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
 static GPIO_PinState buttonBuffer[NO_OF_BUTTONS];
 static GPIO_PinState debounceButtonBuffer1 [ NO_OF_BUTTONS ];
 static GPIO_PinState debounceButtonBuffer2 [ NO_OF_BUTTONS ];

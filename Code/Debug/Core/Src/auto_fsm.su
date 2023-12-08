@@ -1,3 +1,3 @@
-auto_fsm.c:14:6:auto_fsm	8	static
-auto_fsm.c:88:6:adjAutoLight	4	static
-auto_fsm.c:130:6:autoButtonHandler	8	static
+auto_fsm.c:13:6:auto_fsm	8	static
+auto_fsm.c:96:6:autoLightHandler	8	static
+auto_fsm.c:136:6:autoButtonHandler	8	static

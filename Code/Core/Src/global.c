@@ -14,3 +14,6 @@ uint8_t flag_hold=0;
 
 uint8_t lightDuration[3]={5,2,3};
 uint8_t lightdisplay[2]={0,0};
+
+enum AUTOLIGHT autolightstate=INIT;
+enum PEDESTRIANSTATE pedstate=OFF;

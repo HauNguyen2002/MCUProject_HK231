@@ -5,97 +5,107 @@
  *  Created on: Dec 4, 2023
  *      Author: ASUS
  */
-enum MANUALLIGHT{RED,YELLOW,GREEN,INIT,HOLD};
-enum MANUALLIGHT manlightstate=HOLD;
+enum TUNINGLIGHT{T_RED,T_YELLOW,T_GREEN,T_INIT,T_HOLD};
+enum TUNINGLIGHT tunlightstate=T_HOLD;
 
 #include <tuning_fsm.h>
 
 uint8_t temp_lightdisplay=0;
 void tuning_fsm(){
-	switch(manlightstate){
-	case INIT:
+	switch(tunlightstate){
+	case T_INIT:
 		adjTuningLight();
-		manlightstate=RED;
+		tunlightstate=T_RED;
 		temp_lightdisplay=lightDuration[0];
 		break;
-	case HOLD:
-		if(mode==MANUAL_M){
-			manlightstate=INIT;
+	case T_HOLD:
+		if(mode==TUNING_M){
+			tunlightstate=T_INIT;
 		}
 		break;
-	case RED:
-		if(FLAG_BUT_CD==1){
-			FLAG_BUT_CD=0;
-			tunButtonHandler(0, YELLOW);
-		}
-		if(FLAG_MAN==1){
-			FLAG_MAN=0;
+	case T_RED:
+		if(FLAG_TUN==1){
+//			FLAG_MAN=0;
 			adjTuningLight();
+			setTuningLightTimer(250);
+		}
+		if(FLAG_BUT_CD==1){
+//			FLAG_BUT_CD=0;
+			tunButtonHandler(0, T_YELLOW);
+			setButtonCooldownTimer(100);
 		}
 		break;
-	case YELLOW:
-		if(FLAG_BUT_CD==1){
-			FLAG_BUT_CD=0;
-			tunButtonHandler(1, GREEN);
-		}
-		if(FLAG_MAN==1){
-			FLAG_MAN=0;
+	case T_YELLOW:
+		if(FLAG_TUN==1){
+//			FLAG_MAN=0;
 			adjTuningLight();
+			setTuningLightTimer(250);
+		}
+		if(FLAG_BUT_CD==1){
+//			FLAG_BUT_CD=0;
+			tunButtonHandler(1, T_GREEN);
+			setButtonCooldownTimer(100);
 		}
 		break;
-	case GREEN:
-		if(FLAG_BUT_CD==1){
-			FLAG_BUT_CD=0;
-			tunButtonHandler(2, HOLD);
-		}
-		if(FLAG_MAN==1){
-			FLAG_MAN=0;
+	case T_GREEN:
+		if(FLAG_TUN==1){
+//			FLAG_MAN=0;
 			adjTuningLight();
+			setTuningLightTimer(250);
+		}
+		if(FLAG_BUT_CD==1){
+//			FLAG_BUT_CD=0;
+			tunButtonHandler(2, T_HOLD);
+			setButtonCooldownTimer(100);
 		}
 		break;
 	}
 }
 
 void adjTuningLight(){
-	switch(manlightstate){
-	case INIT:
-//		HAL_GPIO_WritePin(RED1_GPIO_Port, RED1_Pin, 0);
-//		HAL_GPIO_WritePin(RED2_GPIO_Port, RED2_Pin, 0);
-//		HAL_GPIO_WritePin(YELLOW1_GPIO_Port, YELLOW1_Pin, 0);
-//		HAL_GPIO_WritePin(YELLOW2_GPIO_Port, YELLOW2_Pin, 0);
-//		HAL_GPIO_WritePin(GREEN1_GPIO_Port, GREEN1_Pin, 0);
-//		HAL_GPIO_WritePin(GREEN2_GPIO_Port, GREEN2_Pin, 0);
+	switch(tunlightstate){
+	case T_INIT:
+		HAL_GPIO_WritePin(D2_GPIO_Port, D2_Pin, 0);
+		HAL_GPIO_WritePin(D3_GPIO_Port, D3_Pin, 0);
+		HAL_GPIO_WritePin(D4_GPIO_Port, D4_Pin, 0);
+		HAL_GPIO_WritePin(D5_GPIO_Port, D5_Pin, 0);
 		break;
-	case HOLD:
+	case T_HOLD:
 		break;
-	case RED:
-//		HAL_GPIO_TogglePin(RED1_GPIO_Port, RED1_Pin);
-//		HAL_GPIO_TogglePin(RED2_GPIO_Port, RED2_Pin);
+	case T_RED:
+		HAL_GPIO_TogglePin(D2_GPIO_Port, D2_Pin);
+		HAL_GPIO_TogglePin(D4_GPIO_Port, D4_Pin);
 		break;
-	case YELLOW:
-//		HAL_GPIO_WritePin(RED1_GPIO_Port, RED1_Pin, 0);
-//		HAL_GPIO_WritePin(RED2_GPIO_Port, RED2_Pin, 0);
-//		HAL_GPIO_TogglePin(YELLOW1_GPIO_Port, YELLOW1_Pin);
-//		HAL_GPIO_TogglePin(YELLOW2_GPIO_Port, YELLOW2_Pin);
+	case T_YELLOW:
+		HAL_GPIO_TogglePin(D2_GPIO_Port, D2_Pin);
+		HAL_GPIO_TogglePin(D3_GPIO_Port, D3_Pin);
+		HAL_GPIO_TogglePin(D4_GPIO_Port, D4_Pin);
+		HAL_GPIO_TogglePin(D5_GPIO_Port, D5_Pin);
 		break;
-	case GREEN:
-//		HAL_GPIO_WritePin(YELLOW1_GPIO_Port, YELLOW1_Pin, 0);
-//		HAL_GPIO_WritePin(YELLOW2_GPIO_Port, YELLOW2_Pin, 0);
-//		HAL_GPIO_TogglePin(GREEN1_GPIO_Port, GREEN1_Pin);
-//		HAL_GPIO_TogglePin(GREEN2_GPIO_Port, GREEN2_Pin);
+	case T_GREEN:
+		HAL_GPIO_TogglePin(D3_GPIO_Port, D3_Pin);
+		HAL_GPIO_TogglePin(D5_GPIO_Port, D5_Pin);
 		break;
 	}
 }
 
-void tunButtonHandler(enum MANUALLIGHT curLight,enum MANUALLIGHT nextLight){
+void turnOffCurrentLight(){
+	HAL_GPIO_WritePin(D2_GPIO_Port, D2_Pin, 0);
+	HAL_GPIO_WritePin(D3_GPIO_Port, D3_Pin, 0);
+	HAL_GPIO_WritePin(D4_GPIO_Port, D4_Pin, 0);
+	HAL_GPIO_WritePin(D5_GPIO_Port, D5_Pin, 0);
+}
+
+void tunButtonHandler(enum TUNINGLIGHT curLight,enum TUNINGLIGHT nextLight){
 	if(is_button_pressed(0)){
 		flag_mode_press=1;
 	}
 	else if(!is_button_pressed(0) && flag_mode_press==1){
 		flag_mode_press=0;
-		if(nextLight==HOLD) mode=AUTO_M;
+		if(nextLight==T_HOLD) mode=AUTO_M;
 		else temp_lightdisplay=lightDuration[nextLight];
-		manlightstate=nextLight;
+		tunlightstate=nextLight;
+		turnOffCurrentLight();
 	}
 
 	if(is_button_pressed(1)){
@@ -103,9 +113,9 @@ void tunButtonHandler(enum MANUALLIGHT curLight,enum MANUALLIGHT nextLight){
 		if(is_button_pressed_1s(1)){
 			flag_hold=1;
 			if(FLAG_AUTO_INC==1){
-				FLAG_AUTO_INC=0;
-				HAL_GPIO_TogglePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin);
+//				FLAG_AUTO_INC=0;
 				temp_lightdisplay++;
+				setAutoIncTimer(500);
 			}
 		}
 	}
