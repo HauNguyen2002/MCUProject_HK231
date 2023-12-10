@@ -8,8 +8,11 @@ C_SRCS += \
 ../Core/Src/Scheduler.c \
 ../Core/Src/auto_fsm.c \
 ../Core/Src/button.c \
+../Core/Src/buzzer.c \
 ../Core/Src/global.c \
+../Core/Src/light_traffic.c \
 ../Core/Src/main.c \
+../Core/Src/main_fsm.c \
 ../Core/Src/manual_fsm.c \
 ../Core/Src/pedestrian_fsm.c \
 ../Core/Src/software_timer.c \
@@ -24,8 +27,11 @@ C_DEPS += \
 ./Core/Src/Scheduler.d \
 ./Core/Src/auto_fsm.d \
 ./Core/Src/button.d \
+./Core/Src/buzzer.d \
 ./Core/Src/global.d \
+./Core/Src/light_traffic.d \
 ./Core/Src/main.d \
+./Core/Src/main_fsm.d \
 ./Core/Src/manual_fsm.d \
 ./Core/Src/pedestrian_fsm.d \
 ./Core/Src/software_timer.d \
@@ -40,8 +46,11 @@ OBJS += \
 ./Core/Src/Scheduler.o \
 ./Core/Src/auto_fsm.o \
 ./Core/Src/button.o \
+./Core/Src/buzzer.o \
 ./Core/Src/global.o \
+./Core/Src/light_traffic.o \
 ./Core/Src/main.o \
+./Core/Src/main_fsm.o \
 ./Core/Src/manual_fsm.o \
 ./Core/Src/pedestrian_fsm.o \
 ./Core/Src/software_timer.o \

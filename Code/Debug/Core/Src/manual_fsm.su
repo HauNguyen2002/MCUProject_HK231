@@ -1,3 +1,2 @@
-manual_fsm.c:13:6:manual_fsm	8	static
-manual_fsm.c:49:6:manLightHandler	8	static
-manual_fsm.c:81:6:manButtonHandler	16	static
+manual_fsm.c:12:6:manual_fsm	8	static
+manual_fsm.c:49:6:manButtonHandler	16	static

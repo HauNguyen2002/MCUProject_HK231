@@ -93,46 +93,10 @@ void auto_fsm(){
 		break;
 	}
 }
-void autoLightHandler(){
-	switch (autolightstate) {
-	case INIT:
-		HAL_GPIO_WritePin(D2_GPIO_Port, D2_Pin, 1);
-		HAL_GPIO_WritePin(D3_GPIO_Port, D3_Pin, 0);
-		HAL_GPIO_WritePin(D4_GPIO_Port, D4_Pin, 0);
-		HAL_GPIO_WritePin(D5_GPIO_Port, D5_Pin, 1);
-		break;
-	case HOLD:
-		break;
-	case RG:
-		HAL_GPIO_WritePin(D2_GPIO_Port, D2_Pin, 1);
-		HAL_GPIO_WritePin(D3_GPIO_Port, D3_Pin, 0);
-		HAL_GPIO_WritePin(D4_GPIO_Port, D4_Pin, 0);
-		HAL_GPIO_WritePin(D5_GPIO_Port, D5_Pin, 1);
-		lightdisplay[0]--;
-		lightdisplay[1]--;
-		break;
-	case RY:
-		HAL_GPIO_WritePin(D4_GPIO_Port, D4_Pin, 1);
-		HAL_GPIO_WritePin(D5_GPIO_Port, D5_Pin, 1);
-		lightdisplay[0]--;
-		lightdisplay[1]--;
-		break;
-	case GR:
-		HAL_GPIO_WritePin(D2_GPIO_Port, D2_Pin, 0);
-		HAL_GPIO_WritePin(D3_GPIO_Port, D3_Pin, 1);
-		HAL_GPIO_WritePin(D4_GPIO_Port, D4_Pin, 1);
-		HAL_GPIO_WritePin(D5_GPIO_Port, D5_Pin, 0);
-		lightdisplay[0]--;
-		lightdisplay[1]--;
-		break;
-	case YR:
-		HAL_GPIO_WritePin(D2_GPIO_Port, D2_Pin, 1);
-		HAL_GPIO_WritePin(D3_GPIO_Port, D3_Pin, 1);
-		lightdisplay[0]--;
-		lightdisplay[1]--;
-		break;
-	}
-}
+
+
+
+
 void autoButtonHandler(){
 	if(is_button_pressed(0)){
 		flag_mode_press=1;

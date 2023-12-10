@@ -1,0 +1,156 @@
+00:53:25 **** Incremental Build of configuration Debug for project Project_HK231 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/buzzer.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/buzzer.d" -MT"Core/Src/buzzer.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/buzzer.o"
+arm-none-eabi-gcc "../Core/Src/main_fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main_fsm.d" -MT"Core/Src/main_fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main_fsm.o"
+arm-none-eabi-gcc "../Core/Src/pedestrian_fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/pedestrian_fsm.d" -MT"Core/Src/pedestrian_fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/pedestrian_fsm.o"
+arm-none-eabi-gcc "../Core/Src/system_stm32f1xx.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/system_stm32f1xx.d" -MT"Core/Src/system_stm32f1xx.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/system_stm32f1xx.o"
+arm-none-eabi-gcc "../Core/Src/tuning_fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/tuning_fsm.d" -MT"Core/Src/tuning_fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/tuning_fsm.o"
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:333,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/global.h:22,
+                 from ../Core/Inc/buzzer.h:12,
+                 from ../Core/Src/buzzer.c:9:
+../Core/Src/buzzer.c: In function 'buzzerChangeState':
+../Core/Src/buzzer.c:15:27: error: 'htim3' undeclared (first use in this function)
+   15 |    __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,10);
+      |                           ^~~~~
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:1396:41: note: in definition of macro '__HAL_TIM_SET_COMPARE'
+ 1396 |   (((__CHANNEL__) == TIM_CHANNEL_1) ? ((__HANDLE__)->Instance->CCR1 = (__COMPARE__)) :\
+      |                                         ^~~~~~~~~~
+../Core/Src/buzzer.c:15:27: note: each undeclared identifier is reported only once for each function it appears in
+   15 |    __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,10);
+      |                           ^~~~~
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:1396:41: note: in definition of macro '__HAL_TIM_SET_COMPARE'
+ 1396 |   (((__CHANNEL__) == TIM_CHANNEL_1) ? ((__HANDLE__)->Instance->CCR1 = (__COMPARE__)) :\
+      |                                         ^~~~~~~~~~
+../Core/Src/main_fsm.c: In function 'main_fsm':
+../Core/Src/main_fsm.c:12:10: error: 'MODE' undeclared (first use in this function)
+   12 |  switch (MODE) {
+      |          ^~~~
+../Core/Src/main_fsm.c:12:10: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main_fsm.c:13:8: error: 'AUTO' undeclared (first use in this function)
+   13 |   case AUTO:
+      |        ^~~~
+../Core/Src/main_fsm.c:15:8: error: 'MANUAL' undeclared (first use in this function); did you mean 'MANUAL_M'?
+   15 |   case MANUAL:
+      |        ^~~~~~
+      |        MANUAL_M
+../Core/Src/main_fsm.c:17:8: error: 'TUNING' undeclared (first use in this function); did you mean 'TUNING_M'?
+   17 |   case TUNING:
+      |        ^~~~~~
+      |        TUNING_M
+../Core/Src/main_fsm.c:19:8: error: 'PEDESTRIAN' undeclared (first use in this function); did you mean 'PEDESTRIANSTATE'?
+   19 |   case PEDESTRIAN:
+      |        ^~~~~~~~~~
+      |        PEDESTRIANSTATE
+In file included from ../Core/Inc/global.h:24,
+                 from ../Core/Inc/main_fsm.h:11,
+                 from ../Core/Src/main_fsm.c:9:
+../Core/Src/main_fsm.c: At top level:
+../Core/Inc/software_timer.h:14:9: warning: array 'flag' assumed to have one element
+   14 | uint8_t flag[];
+      |         ^~~~
+../Core/Inc/software_timer.h:15:10: warning: array 'counter' assumed to have one element
+   15 | uint32_t counter[];
+      |          ^~~~~~~
+make: *** [Core/Src/subdir.mk:67: Core/Src/main_fsm.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Src/buzzer.c:16:4: warning: implicit declaration of function 'setBuzzerStateTimer' [-Wimplicit-function-declaration]
+   16 |    setBuzzerStateTimer(100);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/pedestrian_fsm.c: In function 'pedestrian_fsm':
+../Core/Src/pedestrian_fsm.c:19:4: warning: implicit declaration of function 'pedButtonHandler' [-Wimplicit-function-declaration]
+   19 |    pedButtonHandler(ON);
+      |    ^~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:333,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/global.h:22,
+                 from ../Core/Inc/buzzer.h:12,
+                 from ../Core/Src/buzzer.c:9:
+../Core/Src/buzzer.c: In function 'pedBuzzHandler':
+../Core/Src/buzzer.c:35:26: error: 'htim3' undeclared (first use in this function)
+   35 |   __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
+      |                          ^~~~~
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:1396:41: note: in definition of macro '__HAL_TIM_SET_COMPARE'
+ 1396 |   (((__CHANNEL__) == TIM_CHANNEL_1) ? ((__HANDLE__)->Instance->CCR1 = (__COMPARE__)) :\
+      |                                         ^~~~~~~~~~
+In file included from ../Core/Inc/global.h:24,
+                 from ../Core/Inc/buzzer.h:12,
+                 from ../Core/Src/buzzer.c:9:
+../Core/Src/buzzer.c: At top level:
+../Core/Inc/software_timer.h:14:9: warning: array 'flag' assumed to have one element
+   14 | uint8_t flag[];
+      |         ^~~~
+../Core/Inc/software_timer.h:15:10: warning: array 'counter' assumed to have one element
+   15 | uint32_t counter[];
+      |          ^~~~~~~
+make: *** [Core/Src/subdir.mk:67: Core/Src/buzzer.o] Error 1
+../Core/Src/tuning_fsm.c: In function 'tuning_fsm':
+../Core/Src/tuning_fsm.c:29:4: warning: implicit declaration of function 'setTuningLightTimer' [-Wimplicit-function-declaration]
+   29 |    setTuningLightTimer(250);
+      |    ^~~~~~~~~~~~~~~~~~~
+../Core/Src/pedestrian_fsm.c:20:4: warning: implicit declaration of function 'setButtonCooldownTimer' [-Wimplicit-function-declaration]
+   20 |    setButtonCooldownTimer(100);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:333,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Inc/global.h:22,
+                 from ../Core/Inc/pedestrian_fsm.h:11,
+                 from ../Core/Src/pedestrian_fsm.c:8:
+../Core/Src/pedestrian_fsm.c:22:26: error: 'htim3' undeclared (first use in this function)
+   22 |   __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
+      |                          ^~~~~
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:1396:41: note: in definition of macro '__HAL_TIM_SET_COMPARE'
+ 1396 |   (((__CHANNEL__) == TIM_CHANNEL_1) ? ((__HANDLE__)->Instance->CCR1 = (__COMPARE__)) :\
+      |                                         ^~~~~~~~~~
+../Core/Src/pedestrian_fsm.c:22:26: note: each undeclared identifier is reported only once for each function it appears in
+   22 |   __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
+      |                          ^~~~~
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h:1396:41: note: in definition of macro '__HAL_TIM_SET_COMPARE'
+ 1396 |   (((__CHANNEL__) == TIM_CHANNEL_1) ? ((__HANDLE__)->Instance->CCR1 = (__COMPARE__)) :\
+      |                                         ^~~~~~~~~~
+../Core/Src/pedestrian_fsm.c:32:3: warning: implicit declaration of function 'pedBuzzHandler'; did you mean 'pedLightHandler'? [-Wimplicit-function-declaration]
+   32 |   pedBuzzHandler();
+      |   ^~~~~~~~~~~~~~
+      |   pedLightHandler
+../Core/Src/pedestrian_fsm.c: At top level:
+../Core/Src/pedestrian_fsm.c:38:6: warning: conflicting types for 'pedButtonHandler'
+   38 | void pedButtonHandler(enum PEDESTRIANSTATE nextState){
+      |      ^~~~~~~~~~~~~~~~
+../Core/Src/pedestrian_fsm.c:19:4: note: previous implicit declaration of 'pedButtonHandler' was here
+   19 |    pedButtonHandler(ON);
+      |    ^~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/global.h:24,
+                 from ../Core/Inc/pedestrian_fsm.h:11,
+                 from ../Core/Src/pedestrian_fsm.c:8:
+../Core/Inc/software_timer.h:14:9: warning: array 'flag' assumed to have one element
+   14 | uint8_t flag[];
+      |         ^~~~
+../Core/Inc/software_timer.h:15:10: warning: array 'counter' assumed to have one element
+   15 | uint32_t counter[];
+      |          ^~~~~~~
+../Core/Src/tuning_fsm.c:34:4: warning: implicit declaration of function 'setButtonCooldownTimer' [-Wimplicit-function-declaration]
+   34 |    setButtonCooldownTimer(100);
+      |    ^~~~~~~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:67: Core/Src/pedestrian_fsm.o] Error 1
+../Core/Src/tuning_fsm.c: In function 'tunButtonHandler':
+../Core/Src/tuning_fsm.c:76:3: warning: implicit declaration of function 'turnOffCurrentLight' [-Wimplicit-function-declaration]
+   76 |   turnOffCurrentLight();
+      |   ^~~~~~~~~~~~~~~~~~~
+../Core/Src/tuning_fsm.c:86:5: warning: implicit declaration of function 'setAutoIncTimer' [-Wimplicit-function-declaration]
+   86 |     setAutoIncTimer(500);
+      |     ^~~~~~~~~~~~~~~
+In file included from ../Core/Inc/global.h:24,
+                 from ../Core/Inc/tuning_fsm.h:11,
+                 from ../Core/Src/tuning_fsm.c:10:
+../Core/Src/tuning_fsm.c: At top level:
+../Core/Inc/software_timer.h:14:9: warning: array 'flag' assumed to have one element
+   14 | uint8_t flag[];
+      |         ^~~~
+../Core/Inc/software_timer.h:15:10: warning: array 'counter' assumed to have one element
+   15 | uint32_t counter[];
+      |          ^~~~~~~
+"make -j8 all" terminated with exit code 2. Build might be incomplete.

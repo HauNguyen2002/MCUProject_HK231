@@ -76,8 +76,8 @@ all: main-build
 main-build: Project_HK231.elf secondary-outputs
 
 # Tool invocations
-Project_HK231.elf: $(OBJS) $(USER_OBJS) F:\School\year4-sem1\MCU\Project\Code\STM32F103RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "Project_HK231.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"F:\School\year4-sem1\MCU\Project\Code\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Project_HK231.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Project_HK231.elf: $(OBJS) $(USER_OBJS) D:\Study\MCU\LAD_MCU\PROJECT\Code\STM32F103RBTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "Project_HK231.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\Study\MCU\LAD_MCU\PROJECT\Code\STM32F103RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Project_HK231.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
