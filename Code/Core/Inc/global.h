@@ -62,6 +62,12 @@ enum MANLIGHTSTATE manlightstate;
 enum PEDESTRIANSTATE {OFF,ON};
 enum PEDESTRIANSTATE pedstate;
 
+enum MAIN_FSM {AUTO	,MANUAL, TUNING, PEDESTRIAN};
+enum MAIN_FSM MODE;
+
+
+TIM_HandleTypeDef htim3;
+
 
 
 //void* setAutoLightFlag();

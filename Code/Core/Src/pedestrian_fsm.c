@@ -35,20 +35,5 @@ void pedestrian_fsm(){
 }
 
 
-void pedButtonHandler(enum PEDESTRIANSTATE nextState){
-	if(is_button_pressed(3)){
-		flag_ped_press=1;
-	}
-	else if(!is_button_pressed(3) && flag_ped_press==1){
-		flag_ped_press=0;
-		pedstate=nextState;
-#ifdef CHANGE_AUTOLIGHT
-		if(nextState==ON){
-			autolightstate=INIT;
-			FLAG_AUTO=1;
-		}
-#endif
-	}
-}
 
 

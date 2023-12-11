@@ -46,23 +46,6 @@ void manual_fsm(){
 }
 
 
-void manButtonHandler(enum MANLIGHTSTATE nextState){
-	if(is_button_pressed(1)){
-			flag_man_press=1;
-	}
-	else if (!is_button_pressed(1) && flag_man_press==1){
-		flag_man_press=0;
-		manlightstate=nextState;
-		manLightHandler();
-	}
-	if(is_button_pressed(0)){
-		flag_mode_press=1;
-	}
-	else if(!is_button_pressed(0) && flag_mode_press==1){
-		flag_mode_press=0;
-		mode=AUTO_M;
-		manlightstate=HOLD;
-	}
-}
+
 
 

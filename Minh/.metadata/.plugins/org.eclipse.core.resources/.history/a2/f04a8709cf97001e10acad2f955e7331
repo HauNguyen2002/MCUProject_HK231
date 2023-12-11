@@ -1,0 +1,34 @@
+/*
+ * main_fsm.c
+ *
+ *  Created on: Dec 10, 2023
+ *      Author: Huy Minh
+ */
+
+
+#include "main_fsm.h"
+
+
+
+void main_fsm(){
+	switch (MODE) {
+		case AUTO:
+			if(is_button_pressed(2))
+				MODE = PEDE
+
+			break;
+		case MANUAL:
+
+			break;
+		case TUNING:
+
+			break;
+		case PEDESTRIAN: //Only in AUTO MODE
+
+			break;
+
+		default:
+			break;
+	}
+}
+

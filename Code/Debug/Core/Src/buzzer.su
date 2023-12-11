@@ -1,0 +1,2 @@
+buzzer.c:12:6:buzzerChangeState	8	static
+buzzer.c:33:6:pedBuzzHandler	8	static

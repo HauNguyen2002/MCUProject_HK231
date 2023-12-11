@@ -51,3 +51,13 @@ void timerRun(){
 	}
 }
 
+
+
+void setAutoModeReturnTimerDefault(){
+	// DEFAULT
+	return setAutoModeReturnTimer(10000);
+}
+
+
+
+

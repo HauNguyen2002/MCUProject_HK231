@@ -97,24 +97,4 @@ void auto_fsm(){
 
 
 
-void autoButtonHandler(){
-	if(is_button_pressed(0)){
-		flag_mode_press=1;
-	}
-	else if(!is_button_pressed(0) && flag_mode_press==1){
-		flag_mode_press=0;
-		mode=TUNING_M;
-		autolightstate=HOLD;
-	}
-	if(is_button_pressed(1)){
-		flag_man_press=1;
-	}
-	else if (!is_button_pressed(1) && flag_man_press==1){
-		flag_man_press=0;
-		mode=MANUAL_M;
-		autolightstate=HOLD;
-	}
-}
-
-
 
