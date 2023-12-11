@@ -11,17 +11,6 @@
 
 
 void main_fsm(){
-	// vì ông có chia sẵn r nên mình có thể lam như kiểu main thôi
-
-//	auto_fsm();
-//	manual_fsm();
-//	tuning_fsm();
-//	pedestrian_fsm();
-//	CheckButtonMode();
-
-
-
-
 	switch (MODE) {
 		case AUTO:
 			auto_fsm();

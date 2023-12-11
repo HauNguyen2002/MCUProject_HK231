@@ -1,6 +1,7 @@
-10:00:29 **** Incremental Build of configuration Debug for project Project_HK231 ****
+10:06:01 **** Incremental Build of configuration Debug for project Project_HK231 ****
 make -j8 all 
 arm-none-eabi-gcc "../Core/Src/button.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/button.d" -MT"Core/Src/button.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/button.o"
+arm-none-eabi-gcc "../Core/Src/main_fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main_fsm.d" -MT"Core/Src/main_fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main_fsm.o"
 In file included from ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:130,
                  from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
                  from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
@@ -44,6 +45,7 @@ In file included from ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:1
 ../Core/Src/button.c:16:47: note: in expansion of macro 'A2_GPIO_Port'
    16 | int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
       |                                               ^~~~~~~~~~~~
+../Core/Src/main_fsm.c: In function 'main_fsm':
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:665:29: warning: initialization of 'int' from 'GPIO_TypeDef *' {aka 'struct <anonymous> *'} makes integer from pointer without a cast [-Wint-conversion]
   665 | #define GPIOB               ((GPIO_TypeDef *)GPIOB_BASE)
       |                             ^
@@ -62,6 +64,9 @@ In file included from ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:1
 ../Core/Src/button.c:16:60: note: in expansion of macro 'A3_GPIO_Port'
    16 | int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
       |                                                            ^~~~~~~~~~~~
+../Core/Src/main_fsm.c:27:4: warning: implicit declaration of function 'auto_fsm' [-Wimplicit-function-declaration]
+   27 |    auto_fsm();
+      |    ^~~~~~~~
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:664:29: warning: initialization of 'int' from 'GPIO_TypeDef *' {aka 'struct <anonymous> *'} makes integer from pointer without a cast [-Wint-conversion]
   664 | #define GPIOA               ((GPIO_TypeDef *)GPIOA_BASE)
       |                             ^
@@ -150,6 +155,9 @@ In file included from ../Core/Inc/stm32f1xx_hal_conf.h:241,
 ../Core/Src/button.c:45:24: warning: array subscript has type 'char' [-Wchar-subscripts]
    45 |    flagForButtonPress1s[i]=0;
       |                        ^
+../Core/Src/main_fsm.c:28:4: warning: implicit declaration of function 'CheckButtonMode' [-Wimplicit-function-declaration]
+   28 |    CheckButtonMode(); // có j ông thêm hộ tui cái chuyển cách MODE vs setAutoModeReturnTimerDefault() cho Btn trong nút nha
+      |    ^~~~~~~~~~~~~~~
 ../Core/Src/button.c: At top level:
 ../Core/Src/button.c:63:28: warning: 'enum MANLIGHTSTATE' declared inside parameter list will not be visible outside of this definition or declaration
    63 | void manButtonHandler(enum MANLIGHTSTATE nextState){
@@ -157,11 +165,32 @@ In file included from ../Core/Inc/stm32f1xx_hal_conf.h:241,
 ../Core/Src/button.c:63:42: error: parameter 1 ('nextState') has incomplete type
    63 | void manButtonHandler(enum MANLIGHTSTATE nextState){
       |                       ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+../Core/Src/main_fsm.c:31:4: warning: implicit declaration of function 'manual_fsm'; did you mean 'main_fsm'? [-Wimplicit-function-declaration]
+   31 |    manual_fsm();
+      |    ^~~~~~~~~~
+      |    main_fsm
+../Core/Src/main_fsm.c:36:4: warning: implicit declaration of function 'tuning_fsm'; did you mean 'main_fsm'? [-Wimplicit-function-declaration]
+   36 |    tuning_fsm();
+      |    ^~~~~~~~~~
+      |    main_fsm
 ../Core/Src/button.c: In function 'manButtonHandler':
 ../Core/Src/button.c:65:4: error: 'flag_man_press' undeclared (first use in this function)
    65 |    flag_man_press=1;
       |    ^~~~~~~~~~~~~~
 ../Core/Src/button.c:65:4: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main_fsm.c:41:4: warning: implicit declaration of function 'pedestrian_fsm' [-Wimplicit-function-declaration]
+   41 |    pedestrian_fsm();
+      |    ^~~~~~~~~~~~~~
+In file included from ../Core/Inc/global.h:24,
+                 from ../Core/Inc/main_fsm.h:11,
+                 from ../Core/Src/main_fsm.c:9:
+../Core/Src/main_fsm.c: At top level:
+../Core/Inc/software_timer.h:14:9: warning: array 'flag' assumed to have one element
+   14 | uint8_t flag[];
+      |         ^~~~
+../Core/Inc/software_timer.h:15:10: warning: array 'counter' assumed to have one element
+   15 | uint32_t counter[];
+      |          ^~~~~~~
 ../Core/Src/button.c:69:3: error: 'manlightstate' undeclared (first use in this function)
    69 |   manlightstate=nextState;
       |   ^~~~~~~~~~~~~
@@ -279,5 +308,5 @@ In file included from ../Core/Inc/stm32f1xx_hal_conf.h:241,
 make: *** [Core/Src/subdir.mk:67: Core/Src/button.o] Error 1
 "make -j8 all" terminated with exit code 2. Build might be incomplete.
 
-10:00:30 Build Failed. 34 errors, 30 warnings. (took 405ms)
+10:06:01 Build Failed. 34 errors, 37 warnings. (took 409ms)
 
