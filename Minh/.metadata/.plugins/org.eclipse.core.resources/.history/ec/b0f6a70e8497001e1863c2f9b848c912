@@ -1,0 +1,20 @@
+/*
+ * main_fsm.c
+ *
+ *  Created on: Dec 10, 2023
+ *      Author: Huy Minh
+ */
+
+
+#include "main_fsm.h"
+
+void main_fsm(){
+	switch (STATE) {
+		case value:
+
+			break;
+		default:
+			break;
+	}
+}
+

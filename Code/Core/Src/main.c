@@ -45,7 +45,7 @@
 
 /* Private variables ---------------------------------------------------------*/
 TIM_HandleTypeDef htim2;
-TIM_HandleTypeDef htim3;
+
 
 /* USER CODE BEGIN PV */
 
@@ -132,6 +132,13 @@ int main(void)
 	  tuning_fsm();
 	  manual_fsm();
 	  pedestrian_fsm();
+
+	  //xong r thì trong này gọi main_fsm thôi.
+
+//	  main_fsm();
+//	  SCH_Add_Task(0, main_fsm(), 0, 0);
+
+
 //	  SCH_Dispatch_Tasks();
     /* USER CODE END WHILE */
 

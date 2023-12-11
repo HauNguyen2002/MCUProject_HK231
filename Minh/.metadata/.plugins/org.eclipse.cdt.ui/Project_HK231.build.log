@@ -1,0 +1,312 @@
+10:06:01 **** Incremental Build of configuration Debug for project Project_HK231 ****
+make -j8 all 
+arm-none-eabi-gcc "../Core/Src/button.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/button.d" -MT"Core/Src/button.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/button.o"
+arm-none-eabi-gcc "../Core/Src/main_fsm.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103xB -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main_fsm.d" -MT"Core/Src/main_fsm.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main_fsm.o"
+In file included from ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:130,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h:29,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f1xx_hal_conf.h:237,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/button.c:7:
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:664:29: warning: initialization of 'int' from 'GPIO_TypeDef *' {aka 'struct <anonymous> *'} makes integer from pointer without a cast [-Wint-conversion]
+  664 | #define GPIOA               ((GPIO_TypeDef *)GPIOA_BASE)
+      |                             ^
+../Core/Inc/main.h:66:22: note: in expansion of macro 'GPIOA'
+   66 | #define A1_GPIO_Port GPIOA
+      |                      ^~~~~
+../Core/Src/button.c:16:34: note: in expansion of macro 'A1_GPIO_Port'
+   16 | int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
+      |                                  ^~~~~~~~~~~~
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:664:29: note: (near initialization for 'GPIO_Buttons[0]')
+  664 | #define GPIOA               ((GPIO_TypeDef *)GPIOA_BASE)
+      |                             ^
+../Core/Inc/main.h:66:22: note: in expansion of macro 'GPIOA'
+   66 | #define A1_GPIO_Port GPIOA
+      |                      ^~~~~
+../Core/Src/button.c:16:34: note: in expansion of macro 'A1_GPIO_Port'
+   16 | int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
+      |                                  ^~~~~~~~~~~~
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:664:29: warning: initialization of 'int' from 'GPIO_TypeDef *' {aka 'struct <anonymous> *'} makes integer from pointer without a cast [-Wint-conversion]
+  664 | #define GPIOA               ((GPIO_TypeDef *)GPIOA_BASE)
+      |                             ^
+../Core/Inc/main.h:68:22: note: in expansion of macro 'GPIOA'
+   68 | #define A2_GPIO_Port GPIOA
+      |                      ^~~~~
+../Core/Src/button.c:16:47: note: in expansion of macro 'A2_GPIO_Port'
+   16 | int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
+      |                                               ^~~~~~~~~~~~
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:664:29: note: (near initialization for 'GPIO_Buttons[1]')
+  664 | #define GPIOA               ((GPIO_TypeDef *)GPIOA_BASE)
+      |                             ^
+../Core/Inc/main.h:68:22: note: in expansion of macro 'GPIOA'
+   68 | #define A2_GPIO_Port GPIOA
+      |                      ^~~~~
+../Core/Src/button.c:16:47: note: in expansion of macro 'A2_GPIO_Port'
+   16 | int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
+      |                                               ^~~~~~~~~~~~
+../Core/Src/main_fsm.c: In function 'main_fsm':
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:665:29: warning: initialization of 'int' from 'GPIO_TypeDef *' {aka 'struct <anonymous> *'} makes integer from pointer without a cast [-Wint-conversion]
+  665 | #define GPIOB               ((GPIO_TypeDef *)GPIOB_BASE)
+      |                             ^
+../Core/Inc/main.h:74:22: note: in expansion of macro 'GPIOB'
+   74 | #define A3_GPIO_Port GPIOB
+      |                      ^~~~~
+../Core/Src/button.c:16:60: note: in expansion of macro 'A3_GPIO_Port'
+   16 | int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
+      |                                                            ^~~~~~~~~~~~
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:665:29: note: (near initialization for 'GPIO_Buttons[2]')
+  665 | #define GPIOB               ((GPIO_TypeDef *)GPIOB_BASE)
+      |                             ^
+../Core/Inc/main.h:74:22: note: in expansion of macro 'GPIOB'
+   74 | #define A3_GPIO_Port GPIOB
+      |                      ^~~~~
+../Core/Src/button.c:16:60: note: in expansion of macro 'A3_GPIO_Port'
+   16 | int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
+      |                                                            ^~~~~~~~~~~~
+../Core/Src/main_fsm.c:27:4: warning: implicit declaration of function 'auto_fsm' [-Wimplicit-function-declaration]
+   27 |    auto_fsm();
+      |    ^~~~~~~~
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:664:29: warning: initialization of 'int' from 'GPIO_TypeDef *' {aka 'struct <anonymous> *'} makes integer from pointer without a cast [-Wint-conversion]
+  664 | #define GPIOA               ((GPIO_TypeDef *)GPIOA_BASE)
+      |                             ^
+../Core/Inc/main.h:64:22: note: in expansion of macro 'GPIOA'
+   64 | #define A0_GPIO_Port GPIOA
+      |                      ^~~~~
+../Core/Src/button.c:16:73: note: in expansion of macro 'A0_GPIO_Port'
+   16 | int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
+      |                                                                         ^~~~~~~~~~~~
+../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h:664:29: note: (near initialization for 'GPIO_Buttons[3]')
+  664 | #define GPIOA               ((GPIO_TypeDef *)GPIOA_BASE)
+      |                             ^
+../Core/Inc/main.h:64:22: note: in expansion of macro 'GPIOA'
+   64 | #define A0_GPIO_Port GPIOA
+      |                      ^~~~~
+../Core/Src/button.c:16:73: note: in expansion of macro 'A0_GPIO_Port'
+   16 | int GPIO_Buttons[NO_OF_BUTTONS]={A1_GPIO_Port,A2_GPIO_Port,A3_GPIO_Port,A0_GPIO_Port};
+      |                                                                         ^~~~~~~~~~~~
+../Core/Src/button.c: In function 'button_reading':
+../Core/Src/button.c:29:24: warning: array subscript has type 'char' [-Wchar-subscripts]
+   29 |   debounceButtonBuffer3[i]=debounceButtonBuffer2[i];
+      |                        ^
+../Core/Src/button.c:29:49: warning: array subscript has type 'char' [-Wchar-subscripts]
+   29 |   debounceButtonBuffer3[i]=debounceButtonBuffer2[i];
+      |                                                 ^
+../Core/Src/button.c:30:24: warning: array subscript has type 'char' [-Wchar-subscripts]
+   30 |   debounceButtonBuffer2[i]=debounceButtonBuffer1[i];
+      |                        ^
+../Core/Src/button.c:30:49: warning: array subscript has type 'char' [-Wchar-subscripts]
+   30 |   debounceButtonBuffer2[i]=debounceButtonBuffer1[i];
+      |                                                 ^
+../Core/Src/button.c:31:24: warning: array subscript has type 'char' [-Wchar-subscripts]
+   31 |   debounceButtonBuffer1[i]= HAL_GPIO_ReadPin(GPIO_Buttons[i], Buttons[i]);
+      |                        ^
+../Core/Src/button.c:31:58: warning: array subscript has type 'char' [-Wchar-subscripts]
+   31 |   debounceButtonBuffer1[i]= HAL_GPIO_ReadPin(GPIO_Buttons[i], Buttons[i]);
+      |                                                          ^
+../Core/Src/button.c:31:70: warning: array subscript has type 'char' [-Wchar-subscripts]
+   31 |   debounceButtonBuffer1[i]= HAL_GPIO_ReadPin(GPIO_Buttons[i], Buttons[i]);
+      |                                                                      ^
+../Core/Src/button.c:31:58: warning: passing argument 1 of 'HAL_GPIO_ReadPin' makes pointer from integer without a cast [-Wint-conversion]
+   31 |   debounceButtonBuffer1[i]= HAL_GPIO_ReadPin(GPIO_Buttons[i], Buttons[i]);
+      |                                              ~~~~~~~~~~~~^~~
+      |                                                          |
+      |                                                          int
+In file included from ../Core/Inc/stm32f1xx_hal_conf.h:241,
+                 from ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h:29,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/button.c:7:
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h:233:46: note: expected 'GPIO_TypeDef *' {aka 'struct <anonymous> *'} but argument is of type 'int'
+  233 | GPIO_PinState HAL_GPIO_ReadPin(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+      |                                ~~~~~~~~~~~~~~^~~~~
+../Core/Src/button.c:32:27: warning: array subscript has type 'char' [-Wchar-subscripts]
+   32 |   if(debounceButtonBuffer2[i]==debounceButtonBuffer3[i] && debounceButtonBuffer1[i]==debounceButtonBuffer2[i])
+      |                           ^
+../Core/Src/button.c:32:53: warning: array subscript has type 'char' [-Wchar-subscripts]
+   32 |   if(debounceButtonBuffer2[i]==debounceButtonBuffer3[i] && debounceButtonBuffer1[i]==debounceButtonBuffer2[i])
+      |                                                     ^
+../Core/Src/button.c:32:81: warning: array subscript has type 'char' [-Wchar-subscripts]
+   32 |   if(debounceButtonBuffer2[i]==debounceButtonBuffer3[i] && debounceButtonBuffer1[i]==debounceButtonBuffer2[i])
+      |                                                                                 ^
+../Core/Src/button.c:32:107: warning: array subscript has type 'char' [-Wchar-subscripts]
+   32 |   if(debounceButtonBuffer2[i]==debounceButtonBuffer3[i] && debounceButtonBuffer1[i]==debounceButtonBuffer2[i])
+      |                                                                                                           ^
+../Core/Src/button.c:33:16: warning: array subscript has type 'char' [-Wchar-subscripts]
+   33 |    buttonBuffer[i]= debounceButtonBuffer1[i];
+      |                ^
+../Core/Src/button.c:33:42: warning: array subscript has type 'char' [-Wchar-subscripts]
+   33 |    buttonBuffer[i]= debounceButtonBuffer1[i];
+      |                                          ^
+../Core/Src/button.c:35:18: warning: array subscript has type 'char' [-Wchar-subscripts]
+   35 |   if(buttonBuffer[i]==BUTTON_IS_PRESSED){
+      |                  ^
+../Core/Src/button.c:36:30: warning: array subscript has type 'char' [-Wchar-subscripts]
+   36 |    if(counterForButtonPress1s[i]<DURATION_FOR_AUTO_INCREASING){
+      |                              ^
+../Core/Src/button.c:37:28: warning: array subscript has type 'char' [-Wchar-subscripts]
+   37 |     counterForButtonPress1s[i]++;
+      |                            ^
+../Core/Src/button.c:40:26: warning: array subscript has type 'char' [-Wchar-subscripts]
+   40 |      flagForButtonPress1s[i]=1;
+      |                          ^
+../Core/Src/button.c:44:27: warning: array subscript has type 'char' [-Wchar-subscripts]
+   44 |    counterForButtonPress1s[i]=0;
+      |                           ^
+../Core/Src/button.c:45:24: warning: array subscript has type 'char' [-Wchar-subscripts]
+   45 |    flagForButtonPress1s[i]=0;
+      |                        ^
+../Core/Src/main_fsm.c:28:4: warning: implicit declaration of function 'CheckButtonMode' [-Wimplicit-function-declaration]
+   28 |    CheckButtonMode(); // có j ông thêm hộ tui cái chuyển cách MODE vs setAutoModeReturnTimerDefault() cho Btn trong nút nha
+      |    ^~~~~~~~~~~~~~~
+../Core/Src/button.c: At top level:
+../Core/Src/button.c:63:28: warning: 'enum MANLIGHTSTATE' declared inside parameter list will not be visible outside of this definition or declaration
+   63 | void manButtonHandler(enum MANLIGHTSTATE nextState){
+      |                            ^~~~~~~~~~~~~
+../Core/Src/button.c:63:42: error: parameter 1 ('nextState') has incomplete type
+   63 | void manButtonHandler(enum MANLIGHTSTATE nextState){
+      |                       ~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+../Core/Src/main_fsm.c:31:4: warning: implicit declaration of function 'manual_fsm'; did you mean 'main_fsm'? [-Wimplicit-function-declaration]
+   31 |    manual_fsm();
+      |    ^~~~~~~~~~
+      |    main_fsm
+../Core/Src/main_fsm.c:36:4: warning: implicit declaration of function 'tuning_fsm'; did you mean 'main_fsm'? [-Wimplicit-function-declaration]
+   36 |    tuning_fsm();
+      |    ^~~~~~~~~~
+      |    main_fsm
+../Core/Src/button.c: In function 'manButtonHandler':
+../Core/Src/button.c:65:4: error: 'flag_man_press' undeclared (first use in this function)
+   65 |    flag_man_press=1;
+      |    ^~~~~~~~~~~~~~
+../Core/Src/button.c:65:4: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main_fsm.c:41:4: warning: implicit declaration of function 'pedestrian_fsm' [-Wimplicit-function-declaration]
+   41 |    pedestrian_fsm();
+      |    ^~~~~~~~~~~~~~
+In file included from ../Core/Inc/global.h:24,
+                 from ../Core/Inc/main_fsm.h:11,
+                 from ../Core/Src/main_fsm.c:9:
+../Core/Src/main_fsm.c: At top level:
+../Core/Inc/software_timer.h:14:9: warning: array 'flag' assumed to have one element
+   14 | uint8_t flag[];
+      |         ^~~~
+../Core/Inc/software_timer.h:15:10: warning: array 'counter' assumed to have one element
+   15 | uint32_t counter[];
+      |          ^~~~~~~
+../Core/Src/button.c:69:3: error: 'manlightstate' undeclared (first use in this function)
+   69 |   manlightstate=nextState;
+      |   ^~~~~~~~~~~~~
+../Core/Src/button.c:70:3: warning: implicit declaration of function 'manLightHandler' [-Wimplicit-function-declaration]
+   70 |   manLightHandler();
+      |   ^~~~~~~~~~~~~~~
+../Core/Src/button.c:73:3: error: 'flag_mode_press' undeclared (first use in this function)
+   73 |   flag_mode_press=1;
+      |   ^~~~~~~~~~~~~~~
+../Core/Src/button.c:77:3: error: 'mode' undeclared (first use in this function)
+   77 |   mode=AUTO_M;
+      |   ^~~~
+../Core/Src/button.c:77:8: error: 'AUTO_M' undeclared (first use in this function)
+   77 |   mode=AUTO_M;
+      |        ^~~~~~
+../Core/Src/button.c:78:17: error: 'HOLD' undeclared (first use in this function)
+   78 |   manlightstate=HOLD;
+      |                 ^~~~
+../Core/Src/button.c: In function 'autoButtonHandler':
+../Core/Src/button.c:85:3: error: 'flag_mode_press' undeclared (first use in this function)
+   85 |   flag_mode_press=1;
+      |   ^~~~~~~~~~~~~~~
+../Core/Src/button.c:89:3: error: 'mode' undeclared (first use in this function)
+   89 |   mode=TUNING_M;
+      |   ^~~~
+../Core/Src/button.c:89:8: error: 'TUNING_M' undeclared (first use in this function)
+   89 |   mode=TUNING_M;
+      |        ^~~~~~~~
+../Core/Src/button.c:90:3: error: 'autolightstate' undeclared (first use in this function)
+   90 |   autolightstate=HOLD;
+      |   ^~~~~~~~~~~~~~
+../Core/Src/button.c:90:18: error: 'HOLD' undeclared (first use in this function)
+   90 |   autolightstate=HOLD;
+      |                  ^~~~
+../Core/Src/button.c:93:3: error: 'flag_man_press' undeclared (first use in this function)
+   93 |   flag_man_press=1;
+      |   ^~~~~~~~~~~~~~
+../Core/Src/button.c:97:8: error: 'MANUAL_M' undeclared (first use in this function)
+   97 |   mode=MANUAL_M;
+      |        ^~~~~~~~
+../Core/Src/button.c: At top level:
+../Core/Src/button.c:103:28: warning: 'enum PEDESTRIANSTATE' declared inside parameter list will not be visible outside of this definition or declaration
+  103 | void pedButtonHandler(enum PEDESTRIANSTATE nextState){
+      |                            ^~~~~~~~~~~~~~~
+../Core/Src/button.c:103:44: error: parameter 1 ('nextState') has incomplete type
+  103 | void pedButtonHandler(enum PEDESTRIANSTATE nextState){
+      |                       ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+../Core/Src/button.c: In function 'pedButtonHandler':
+../Core/Src/button.c:105:3: error: 'flag_ped_press' undeclared (first use in this function)
+  105 |   flag_ped_press=1;
+      |   ^~~~~~~~~~~~~~
+../Core/Src/button.c:109:3: error: 'pedstate' undeclared (first use in this function)
+  109 |   pedstate=nextState;
+      |   ^~~~~~~~
+../Core/Src/button.c: At top level:
+../Core/Src/button.c:120:28: warning: 'enum TUNINGLIGHT' declared inside parameter list will not be visible outside of this definition or declaration
+  120 | void tunButtonHandler(enum TUNINGLIGHT curLight,enum TUNINGLIGHT nextLight){
+      |                            ^~~~~~~~~~~
+../Core/Src/button.c:120:40: error: parameter 1 ('curLight') has incomplete type
+  120 | void tunButtonHandler(enum TUNINGLIGHT curLight,enum TUNINGLIGHT nextLight){
+      |                       ~~~~~~~~~~~~~~~~~^~~~~~~~
+../Core/Src/button.c:120:66: error: parameter 2 ('nextLight') has incomplete type
+  120 | void tunButtonHandler(enum TUNINGLIGHT curLight,enum TUNINGLIGHT nextLight){
+      |                                                 ~~~~~~~~~~~~~~~~~^~~~~~~~~
+../Core/Src/button.c: In function 'tunButtonHandler':
+../Core/Src/button.c:122:3: error: 'flag_mode_press' undeclared (first use in this function)
+  122 |   flag_mode_press=1;
+      |   ^~~~~~~~~~~~~~~
+../Core/Src/button.c:126:17: error: 'T_HOLD' undeclared (first use in this function)
+  126 |   if(nextLight==T_HOLD) mode=AUTO_M;
+      |                 ^~~~~~
+../Core/Src/button.c:126:25: error: 'mode' undeclared (first use in this function)
+  126 |   if(nextLight==T_HOLD) mode=AUTO_M;
+      |                         ^~~~
+../Core/Src/button.c:126:30: error: 'AUTO_M' undeclared (first use in this function)
+  126 |   if(nextLight==T_HOLD) mode=AUTO_M;
+      |                              ^~~~~~
+../Core/Src/button.c:127:8: error: 'temp_lightdisplay' undeclared (first use in this function)
+  127 |   else temp_lightdisplay=lightDuration[nextLight];
+      |        ^~~~~~~~~~~~~~~~~
+../Core/Src/button.c:127:26: error: 'lightDuration' undeclared (first use in this function)
+  127 |   else temp_lightdisplay=lightDuration[nextLight];
+      |                          ^~~~~~~~~~~~~
+../Core/Src/button.c:128:3: error: 'tunlightstate' undeclared (first use in this function)
+  128 |   tunlightstate=nextLight;
+      |   ^~~~~~~~~~~~~
+../Core/Src/button.c:129:3: warning: implicit declaration of function 'turnOffCurrentLight' [-Wimplicit-function-declaration]
+  129 |   turnOffCurrentLight();
+      |   ^~~~~~~~~~~~~~~~~~~
+../Core/Src/button.c:133:3: error: 'flag_inc_press' undeclared (first use in this function)
+  133 |   flag_inc_press=1;
+      |   ^~~~~~~~~~~~~~
+../Core/Src/button.c:135:4: error: 'flag_hold' undeclared (first use in this function)
+  135 |    flag_hold=1;
+      |    ^~~~~~~~~
+../Core/Src/button.c:136:7: error: 'FLAG_AUTO_INC' undeclared (first use in this function)
+  136 |    if(FLAG_AUTO_INC==1){
+      |       ^~~~~~~~~~~~~
+../Core/Src/button.c:139:5: warning: implicit declaration of function 'setAutoIncTimer' [-Wimplicit-function-declaration]
+  139 |     setAutoIncTimer(500);
+      |     ^~~~~~~~~~~~~~~
+../Core/Src/button.c:149:3: error: 'flag_set_press' undeclared (first use in this function)
+  149 |   flag_set_press=1;
+      |   ^~~~~~~~~~~~~~
+../Core/Src/button.c: In function 'CheckButtonMode':
+../Core/Src/button.c:159:19: error: expected expression before 'enum'
+  159 |  manButtonHandler(enum MANLIGHTSTATE nextState);
+      |                   ^~~~
+../Core/Src/button.c:161:19: error: expected expression before 'enum'
+  161 |  pedButtonHandler(enum PEDESTRIANSTATE nextState);
+      |                   ^~~~
+../Core/Src/button.c:162:19: error: expected expression before 'enum'
+  162 |  tunButtonHandler(enum TUNINGLIGHT curLight,enum TUNINGLIGHT nextLight);
+      |                   ^~~~
+make: *** [Core/Src/subdir.mk:67: Core/Src/button.o] Error 1
+"make -j8 all" terminated with exit code 2. Build might be incomplete.
+
+10:06:01 Build Failed. 34 errors, 37 warnings. (took 409ms)
+

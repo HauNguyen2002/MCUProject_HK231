@@ -3,4 +3,6 @@ software_timer.c:23:6:setTuningLightTimer	16	static
 software_timer.c:28:6:setButtonCooldownTimer	16	static
 software_timer.c:33:6:setAutoIncTimer	16	static
 software_timer.c:37:6:setBuzzerStateTimer	16	static
-software_timer.c:42:6:timerRun	16	static
+software_timer.c:42:6:setAutoModeReturnTimer	16	static
+software_timer.c:47:6:timerRun	16	static
+software_timer.c:56:6:setAutoModeReturnTimerDefault	8	static

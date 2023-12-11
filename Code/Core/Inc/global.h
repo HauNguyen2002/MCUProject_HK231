@@ -22,6 +22,13 @@
 #include "main.h"
 #include "button.h"
 #include "software_timer.h"
+#include "buzzer.h"
+#include "light_traffic.h"
+
+
+
+
+
 
 #define AUTO_M		0
 #define	TUNING_M	1
@@ -40,13 +47,26 @@ uint8_t flag_mode_press,flag_inc_press, flag_set_press, flag_hold,flag_man_press
 uint8_t mode;
 uint8_t lightDuration[3];
 uint8_t lightdisplay[2];
+uint8_t buzzstate;
 
 
 enum AUTOLIGHT{INIT,HOLD,RG,RY,GR,YR};
 enum AUTOLIGHT autolightstate;
 
+enum TUNINGLIGHT{T_RED,T_YELLOW,T_GREEN,T_INIT,T_HOLD};
+enum TUNINGLIGHT tunlightstate;
+
+enum MANLIGHTSTATE{M_INIT,M_HOLD,M_RG,M_RY,M_GR,M_YR};
+enum MANLIGHTSTATE manlightstate;
+
 enum PEDESTRIANSTATE {OFF,ON};
 enum PEDESTRIANSTATE pedstate;
+
+enum MAIN_FSM {AUTO	,MANUAL, TUNING, PEDESTRIAN};
+enum MAIN_FSM MODE;
+
+
+TIM_HandleTypeDef htim3;
 
 
 

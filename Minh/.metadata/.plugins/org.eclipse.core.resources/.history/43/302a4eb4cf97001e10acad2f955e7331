@@ -1,0 +1,49 @@
+/*
+ * main_fsm.c
+ *
+ *  Created on: Dec 10, 2023
+ *      Author: Huy Minh
+ */
+
+
+#include "main_fsm.h"
+
+
+
+void main_fsm(){
+	switch (MODE) {
+		case AUTO:
+			auto_fsm();
+			if(is_button_pressed(1)){
+				MODE = MANUAL;
+				setAutoModeReturnTimer();
+			}
+
+			if(is_button_pressed(2)){
+				MODE = TUNING;
+				setAutoModeReturnTimer();
+			}
+
+			if(is_button_pressed(3)){
+				MODE = PEDESTRIAN;
+				setAutoModeReturnTimer();
+			}
+			break;
+		case MANUAL:
+			manual_fsm();
+			if(is_button_pressed(2)){
+				MODE = MANUAL;
+				setAutoModeReturnTimer();
+			}
+
+			break;
+		case TUNING:
+
+			break;
+		case PEDESTRIAN: //Only in AUTO MODE
+
+			break;
+
+		default:
+			break;
+	}

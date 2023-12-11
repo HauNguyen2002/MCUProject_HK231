@@ -1,0 +1,5 @@
+light_traffic.c:16:6:turnOffCurrentLight	8	static
+light_traffic.c:27:6:autoLightHandler	8	static
+light_traffic.c:72:6:manLightHandler	8	static
+light_traffic.c:109:6:adjTuningLight	8	static
+light_traffic.c:141:6:pedLightHandler	8	static

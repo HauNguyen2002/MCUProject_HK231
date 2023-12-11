@@ -39,10 +39,25 @@ void setBuzzerStateTimer(int duration){
 	counter[4]=duration/TIMER_CYCLE;
 }
 
+void setAutoModeReturnTimer(int duration){
+	flag[5] = 0;
+	counter[5] = duration / TIMER_CYCLE;
+}
+
 void timerRun(){
 	for(int i=0;i<MAX_SOFTWARE_TIMER;i++){
 		if(counter[i]>0) counter[i]--;
 		if(counter[i]==0) flag[i]=1;
 	}
 }
+
+
+
+void setAutoModeReturnTimerDefault(){
+	// DEFAULT
+	return setAutoModeReturnTimer(10000);
+}
+
+
+
 
