@@ -1,5 +1,5 @@
 pedestrian_fsm.c:14:6:pedestrian_fsm	8	static
-pedestrian_fsm.c:35:6:pedLightHandler	8	static
-pedestrian_fsm.c:63:6:buzzerChangeState	8	static
-pedestrian_fsm.c:81:6:pedBuzzHandler	8	static
-pedestrian_fsm.c:104:6:pedButtonHandler	16	static
+pedestrian_fsm.c:30:6:switchHardwareHandler	8	static
+pedestrian_fsm.c:42:6:pedLightBuzzerHandler	8	static
+pedestrian_fsm.c:82:6:buzzerChangeState	8	static
+pedestrian_fsm.c:101:6:pedButtonHandler	16	static

@@ -1,4 +1,4 @@
-tuning_fsm.c:14:6:tuning_fsm	8	static
-tuning_fsm.c:65:6:adjTuningLight	8	static
-tuning_fsm.c:92:6:turnOffCurrentLight	8	static
-tuning_fsm.c:99:6:tunButtonHandler	16	static
+tuning_fsm.c:15:6:tuning_fsm	8	static
+tuning_fsm.c:66:6:tunLightHandler	8	static
+tuning_fsm.c:93:6:turnOffCurrentLight	8	static
+tuning_fsm.c:100:6:tunButtonHandler	16	static

@@ -83,7 +83,8 @@ void SCH_Arrange_List(tNode* cur_node,unsigned int DURATION){
 	}
 }
 void SCH_Init(void){
-	tList* SCH_tlist=(tList*)malloc(10*sizeof(tList));
+//	tList* SCH_tlist=(tList*)malloc(10*sizeof(tList));
+	tList* SCH_tlist;
 	SCH_tlist->head=SCH_tlist->tail=NULL;
 	SCH_tlist->row_cml=0;
 }
@@ -101,7 +102,8 @@ void SCH_Update(void)
 
 unsigned char SCH_Add_Task (unsigned int TID, void (*pFunction)(void), unsigned int DELAY, unsigned int PERIOD)
 {
-	tNode* new_task=(tNode*)malloc(sizeof(tNode));
+//	tNode* new_task=(tNode*)malloc(sizeof(tNode));
+	tNode* new_task;
 	new_task->delay=DELAY;
 	new_task->period=PERIOD;
 	new_task->ptask=pFunction;

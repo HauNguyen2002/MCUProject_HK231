@@ -9,12 +9,13 @@ enum TUNINGLIGHT{T_RED,T_YELLOW,T_GREEN,T_INIT,T_HOLD};
 enum TUNINGLIGHT tunlightstate=T_HOLD;
 
 #include <tuning_fsm.h>
-
+UART_HandleTypeDef huart2;
+char message[20];
 uint8_t temp_lightdisplay=0;
 void tuning_fsm(){
 	switch(tunlightstate){
 	case T_INIT:
-		adjTuningLight();
+		tunLightHandler();
 		tunlightstate=T_RED;
 		temp_lightdisplay=lightDuration[0];
 		break;
@@ -26,7 +27,7 @@ void tuning_fsm(){
 	case T_RED:
 		if(FLAG_TUN==1){
 //			FLAG_MAN=0;
-			adjTuningLight();
+			tunLightHandler();
 			setTuningLightTimer(250);
 		}
 		if(FLAG_BUT_CD==1){
@@ -38,7 +39,7 @@ void tuning_fsm(){
 	case T_YELLOW:
 		if(FLAG_TUN==1){
 //			FLAG_MAN=0;
-			adjTuningLight();
+			tunLightHandler();
 			setTuningLightTimer(250);
 		}
 		if(FLAG_BUT_CD==1){
@@ -50,7 +51,7 @@ void tuning_fsm(){
 	case T_GREEN:
 		if(FLAG_TUN==1){
 //			FLAG_MAN=0;
-			adjTuningLight();
+			tunLightHandler();
 			setTuningLightTimer(250);
 		}
 		if(FLAG_BUT_CD==1){
@@ -62,7 +63,7 @@ void tuning_fsm(){
 	}
 }
 
-void adjTuningLight(){
+void tunLightHandler(){
 	switch(tunlightstate){
 	case T_INIT:
 		HAL_GPIO_WritePin(D2_GPIO_Port, D2_Pin, 0);
@@ -113,15 +114,19 @@ void tunButtonHandler(enum TUNINGLIGHT curLight,enum TUNINGLIGHT nextLight){
 		if(is_button_pressed_1s(1)){
 			flag_hold=1;
 			if(FLAG_AUTO_INC==1){
-//				FLAG_AUTO_INC=0;
 				temp_lightdisplay++;
+				if(temp_lightdisplay>99) temp_lightdisplay=0;
 				setAutoIncTimer(500);
 			}
 		}
 	}
 	else if (!is_button_pressed(1) && flag_inc_press==1){
 		flag_inc_press=0;
-		(flag_hold==0)?(temp_lightdisplay++):(flag_hold=0);
+		if(flag_hold==0){
+			temp_lightdisplay++;
+			if(temp_lightdisplay>99) temp_lightdisplay=0;
+		}
+		else flag_hold=0;
 	}
 
 	if(is_button_pressed(2)){

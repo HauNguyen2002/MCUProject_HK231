@@ -4,7 +4,7 @@ Scheduler.c:34:6:newNorm	24	static
 Scheduler.c:47:6:SCH_Arrange_Head	4	static
 Scheduler.c:59:6:SCH_Arrange_List	24	static
 Scheduler.c:85:6:SCH_Init	16	static
-Scheduler.c:90:6:SCH_Update	4	static
-Scheduler.c:102:15:SCH_Add_Task	32	static
-Scheduler.c:122:6:SCH_Dispatch_Tasks	16	static
-Scheduler.c:148:15:SCH_Delete_Tasks	16	static
+Scheduler.c:91:6:SCH_Update	4	static
+Scheduler.c:103:15:SCH_Add_Task	32	static
+Scheduler.c:124:6:SCH_Dispatch_Tasks	16	static
+Scheduler.c:150:15:SCH_Delete_Tasks	16	static

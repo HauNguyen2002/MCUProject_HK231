@@ -32,6 +32,7 @@ void auto_fsm(){
 			setButtonCooldownTimer(100);
 		}
 		if(FLAG_AUTO==1){
+			HAL_GPIO_TogglePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin);
 //			FLAG_AUTO=0;
 			if(lightdisplay[1]==0){
 				lightdisplay[1]=lightDuration[1];
@@ -48,6 +49,7 @@ void auto_fsm(){
 			setButtonCooldownTimer(100);
 		}
 		if(FLAG_AUTO==1){
+			HAL_GPIO_TogglePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin);
 //			FLAG_AUTO=0;
 			if(lightdisplay[1]==0){
 				lightdisplay[0]=lightDuration[2];
@@ -65,6 +67,7 @@ void auto_fsm(){
 			setButtonCooldownTimer(100);
 		}
 		if(FLAG_AUTO==1){
+			HAL_GPIO_TogglePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin);
 //			FLAG_AUTO=0;
 			if(lightdisplay[0]==0){
 				lightdisplay[0]=lightDuration[1];
@@ -81,6 +84,7 @@ void auto_fsm(){
 			setButtonCooldownTimer(100);
 		}
 		if(FLAG_AUTO==1){
+			HAL_GPIO_TogglePin(DEBUG_LED_GPIO_Port, DEBUG_LED_Pin);
 //			FLAG_AUTO=0;
 			if(lightdisplay[0]==0){
 				lightdisplay[0]=lightDuration[0];

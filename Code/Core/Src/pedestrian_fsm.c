@@ -18,45 +18,64 @@ void pedestrian_fsm(){
 			pedButtonHandler(ON);
 			setButtonCooldownTimer(100);
 		}
-		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
-		HAL_GPIO_WritePin(D6_GPIO_Port, D6_Pin, 0);
-		HAL_GPIO_WritePin(D7_GPIO_Port, D7_Pin, 0);
 		break;
 	case ON:
 		if(FLAG_BUT_CD==1){
 			pedButtonHandler(OFF);
 			setButtonCooldownTimer(100);
 		}
-		pedLightHandler();
-		pedBuzzHandler();
 		break;
 	}
 }
-void pedLightHandler(){
+void switchHardwareHandler(){
+	switch(pedstate){
+	case OFF:
+		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
+		HAL_GPIO_WritePin(D6_GPIO_Port, D6_Pin, 0);
+		HAL_GPIO_WritePin(D7_GPIO_Port, D7_Pin, 0);
+		break;
+	case ON:
+		pedLightBuzzerHandler();
+		break;
+	}
+}
+void pedLightBuzzerHandler(){
 	switch(autolightstate){
 	case INIT:
 		HAL_GPIO_WritePin(D6_GPIO_Port, D6_Pin, 0);
 		HAL_GPIO_WritePin(D7_GPIO_Port, D7_Pin, 1);
+
+		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
 		break;
 	case HOLD:
 		HAL_GPIO_WritePin(D6_GPIO_Port, D6_Pin, 0);
 		HAL_GPIO_WritePin(D7_GPIO_Port, D7_Pin, 0);
+
+		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
 		break;
 	case RG:
 		HAL_GPIO_WritePin(D6_GPIO_Port, D6_Pin, 0);
 		HAL_GPIO_WritePin(D7_GPIO_Port, D7_Pin, 1);
+
+		if(lightdisplay[1]<5) __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,10);
 		break;
 	case RY:
 		HAL_GPIO_WritePin(D6_GPIO_Port, D6_Pin, 0);
 		HAL_GPIO_WritePin(D7_GPIO_Port, D7_Pin, 1);
+
+		buzzerChangeState();
 		break;
 	case GR:
 		HAL_GPIO_WritePin(D6_GPIO_Port, D6_Pin, 1);
 		HAL_GPIO_WritePin(D7_GPIO_Port, D7_Pin, 0);
+
+		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
 		break;
 	case YR:
 		HAL_GPIO_WritePin(D6_GPIO_Port, D6_Pin, 1);
 		HAL_GPIO_WritePin(D7_GPIO_Port, D7_Pin, 0);
+
+		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
 		break;
 	}
 }
@@ -78,29 +97,7 @@ void buzzerChangeState(){
 		break;
 	}
 }
-void pedBuzzHandler(){
-	switch(autolightstate){
-	case INIT:
-		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
-		break;
-	case HOLD:
-		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
-		break;
-	case RG:
-		if(lightdisplay[1]<5)
-		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,10);
-		break;
-	case RY:
-		buzzerChangeState();
-		break;
-	case GR:
-		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
-		break;
-	case YR:
-		__HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_1,0);
-		break;
-	}
-}
+
 void pedButtonHandler(enum PEDESTRIANSTATE nextState){
 	if(is_button_pressed(3)){
 		flag_ped_press=1;
